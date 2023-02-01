@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for book in all_books %}
+
+    <div class="book">
+        {{ book.author.first_name }}{{ book.author.last_name }}
+        <div class="title">
+            <a href="/books/{{book.id}}">{{ book.title }}</a>
+            <span class="read_time">Read time: {{ book.read_time }} hrs</span>
+        </div>
+        <div class="buttons">
+            <form class="delete-from" action="/books/{{book.id}}/delete" method="post">
+                <button class="trash-button">&#128465;</button>
+            </form>
+        </div>
+    </div>
+
+{% endfor %}
+
+{% endblock %}
